@@ -1,50 +1,16 @@
-# ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Overview
 
-## Template Instructions
+This House-Price project utilises machine learning to build a functional data app for predicting House Sale Prices, presented on an interactive Streamlit dashboard, hosted on Heroku. The project is for educational purposes only and includes usage of Machine Learning Python Packages, Data analysis, Data visualisation tools, and Streamlit. 
 
-Welcome,
+The project was designed to help a client maximise the sale price of homes they have inherited in Ames, Iowa. To achieve this, the client has provided a dataset that includes house sale prices and various features of the properties. The goals are to identify the optimal sale price for these homes and to analyse how specific property features influence the price. 
 
-This is the Code Institute student template for the Heritage Housing project option in Predictive Analytics. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions. Click the `Use this template` button above to get started.
+To ensure a structured and systematic approach, the project follows the Cross Industry Standard Process for Data Mining (CRISP-DM). This six-phase methodology provides a comprehensive framework for navigating the data science life cycle, from understanding the business problem to delivering actionable insights.
 
-You can safely delete the Template Instructions section of this README.md file,  and modify the remaining paragraphs for your own project. Please do read the Template Instructions at least once, though! It contains some important information about the IDE and the extensions we use.
-
-## How to use this repo
-
-1. Use this template to create your GitHub project repo
-
-2. Log into the cloud-based IDE with your GitHub account.
-
-3. On your Dashboard, click on the Create button
-
-4. Paste in the URL you copied from GitHub earlier
-
-5. Click Create
-
-6. Wait for the workspace to open. This can take a few minutes.
-
-7. Open a new terminal and `pip3 install -r requirements.txt`
-
-11. Open the jupyter_notebooks directory and click on the notebook you want to open.
-
-12. Click the kernel button and choose Python Environments.
-
-Note that the kernel says Python 3.12.2 as it inherits from the workspace so it will be Python-3.12.2 as installed by our template. To confirm this you can use `! python --version` in a notebook code cell.
-
-## Cloud IDE Reminders
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In your Cloud IDE, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with *Regenerate API Key*.
+This was my fifth Milestone project with Code Institute and focusses not only on the code and presentation of the application, but the logic behind the analysis and interpretation of the data.
 
 ## Dataset Content
 
-* The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data). We then created a fictitious user story where predictive analytics can be applied in a real project in the workplace.
+* The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data). 
 * The dataset has almost 1.5 thousand rows and represents housing records from Ames, Iowa, indicating house profile (Floor Area, Basement, Garage, Kitchen, Lot, Porch, Wood Deck, Year Built) and its respective sale price for houses built between 1872 and 2010.
 
 |Variable|Meaning|Units|
@@ -85,24 +51,62 @@ Although your friend has an excellent understanding of property prices in her ow
 
 ## Hypothesis and how to validate?
 
-* List here your project hypothesis(es) and how you envision validating it (them).
+### Hypothesis 1
 
-## The rationale to map the business requirements to the Data Visualisations and ML tasks
+Larger houses have a higher sale price than smaller houses (sq feet).
+* A correlation study is required to test this hypothesis
 
-* List your business requirements and a rationale to map them to the Data Visualisations and ML tasks.
+### Hypothesis 2
+
+The year a house was built is a significant factor in determining house price.
+* A correlation study is required to test this hypothesis
+
+### Hypothesis 3
+
+Houses in the best condition command the highest prices.
+* A correlation study is required to test this hypothesis
+
+## Rationale to map the business requirements to the data visualizations and Machine Learning task
+
+### Business Requirement 1: Data Visualization and Correlation Study
+  - We will load, inspect, evaluate, clean and feature engineer the data related to the houses provided by the client.
+  - We will conduct a correlation study to understand how each variable correlates with Sale Price of a house.
+  - We will use the visual representations of the data to test our hypotheses and fulfill the business requirements.
+For more information, please visit the "CorrelationStudy" notebook.
+
+### Business Requirement 2: Regression Pipeline
+  - We want to be able to predict the sale price of the 4 inherited houses for our client, and any other house in Ames, Iowa.
+  - We will identify the data variables (property attributes) necessary to make a prediction about the sale price.
+  - We will run a regression model to predict the sale price from the selected variables.
+  - We will clean and feature engineer the data to prepare it for machine learning. 
+  - We obtain the R2 score and Mean Absolute Error.
 
 ## ML Business Case
 
-* In the previous bullet, you potentially visualised an ML task to answer a business requirement. You should frame the business case using the method we covered in the course.
+  - We need to implement an ML model to predict the sale price of a house. Data analytics alone will not be sufficient to meet the business requirements. As the target variable (SalePrice) is a continuous numeric value, we will use a Regression Model.
+  - The target variable is already identified so the model will be superised.
+  - As agreed with the client, model success will be defined by an R2 score of at least 0.7 on the Train and Test Set.
+  - The ML model will be considered expired if after a period of 12 months the models predictions are more than 40% different from the actual sale price, on more than 30% of predictions.
+  - The ML model should predict the sale price in USD if all necessary input variables (house attributes) are provided. 
+
+___________________________
+  
 
 ## Dashboard Design
 
-* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other items that your dashboard library supports.
-* Eventually, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but eventually you needed to use another plot type)
+### Page 1 | Project Summary
+* Explain project terms & jargon
+* Describe Project Dataset
+* State Business Requirements
 
-## Unfixed Bugs
+### Page 2 | Feature Correlation
 
-* You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not valid reason to leave bugs unfixed.
+### Page 3 | Sale Price Predictor
+
+### Page 4 | Hypothesesis - Testing and Validation
+
+### Page 5 | ML Pipeline
+
 
 ## Deployment
 
