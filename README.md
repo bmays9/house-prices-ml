@@ -95,11 +95,12 @@ ___________________________
 ## Dashboard Design
 
 ### Page 1 | Project Summary
-* Explain project terms & jargon
+* Explain the project, terms & jargon
 * Describe Project Dataset
 * State Business Requirements
 
-### Page 2 | Feature Correlation
+### Page 2 | Sale Price Study
+* Satisfy Business Requirement 1
 
 ### Page 3 | Sale Price Predictor
 
