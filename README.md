@@ -53,12 +53,13 @@ Although your friend has an excellent understanding of property prices in her ow
 
 ### Hypothesis 1
 
-Larger houses have a higher sale price than smaller houses (sq feet).
+Larger houses have a higher sale price than smaller houses (area).
 * A correlation study is required to test this hypothesis
 
 ### Hypothesis 2
 
-The year a house was built is a significant factor in determining house price.
+Newer houses, or recently remodelled houses are more expensive than older 
+houses.
 * A correlation study is required to test this hypothesis
 
 ### Hypothesis 3
