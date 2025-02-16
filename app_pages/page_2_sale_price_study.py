@@ -16,10 +16,10 @@ def page2_sale_price_study_body():
     df = load_house_sales_data()
 
     # From CorrelationStudy notebook
-    vars_to_study = ['OverallQual', 'GrLivArea', 'GarageArea',
-                     'TotalBsmtSF', '1stFlrSF','YearBuilt']
+    vars_to_study = ['GrLivArea', 'GarageArea', 'TotalBsmtSF',
+                     '1stFlrSF','YearBuilt', 'OverallQual']
     
-    st.write("## Housing Price Correlation Study | Business Requirement 1")
+    st.write("## Sale Price Correlation Study | Business Requirement 1")
     st.info(
         f"* **Business Requirement** - The client is interested in discovering "
         f"how house attributes correlate with sale prices. Therefore, the "
@@ -48,7 +48,45 @@ def page2_sale_price_study_body():
         f"Our analysis revealed the most correlated variables are: \n"
         f"**{vars_to_study}**")
 
-# Text based on "04 - CorrelationStudy" notebook - "Conclusions" section
+    # Text based on "04 - CorrelationStudy" notebook - "Conclusions" section
+    st.subheader(f"**Conclusions from the Study**")
     st.info(
-        f"Conclusions"
+        f"- Typically, larger houses have a higher sale price.\n"
+        f"- Typically, newer houses have a higher sale price.\n"
+        f"- The quality of the house correlates positively with the sale " 
+        f"price.\n"
+        f"- An overall condition rating of at least 5 is required to achieve "
+        f"the highest sale prices.\n"
     )
+
+    # Variables v Sale Price
+    df_eda = df[vars_to_study + ['SalePrice']]
+    boxplot_var = ['OverallQual']
+    if st.checkbox("SalePrice correlation per variable"):
+        target_var = 'SalePrice'
+        plot_per_variable(df_eda, boxplot_var, target_var)
+
+
+def plot_per_variable(df_eda, boxplot_var, target_var):
+    for col in df_eda.drop([target_var], axis=1).columns.to_list():
+        plot_scatter(df_eda, col, target_var)
+        if col in boxplot_var:
+            plot_boxplot(df_eda, col, target_var)
+
+def plot_scatter(df, col, target_var):
+    """
+    Generate a scatter plot.
+    """
+    fig, ax = plt.subplots(figsize=(12, 6))
+    sns.regplot(data=df, x=col, y=target_var, ci=None, line_kws={"color": "green"})
+    plt.title(f"Scatter plot of {target_var} vs {col}", fontsize=20)
+    st.pyplot(fig)
+
+def plot_boxplot(df, col, target_var):
+    """
+    Generate a box plot.
+    """
+    fig, ax = plt.subplots(figsize=(12, 6))
+    sns.boxplot(data=df, x=col, y=target_var)
+    plt.title(f"Scatter plot of {target_var} vs {col}", fontsize=20)
+    st.pyplot(fig)
