@@ -1,5 +1,6 @@
 import streamlit as st
 from src.data_management import load_house_sales_data
+from src.data_management import load_correlation_data
 import matplotlib.pyplot as plt
 import numpy as np
 import ppscore as pps
@@ -14,6 +15,7 @@ def page2_sale_price_study_body():
     
     # Load data
     df = load_house_sales_data()
+    df_results = load_correlation_data()
 
     # From CorrelationStudy notebook
     vars_to_study = ['GrLivArea', 'GarageArea', 'TotalBsmtSF',
@@ -59,6 +61,10 @@ def page2_sale_price_study_body():
         f"the highest sale prices.\n"
     )
 
+    # Correlation Results
+    if st.checkbox("Correlation Results: Target variable = SalePrice"):
+        display_correlation_results(df_results) 
+
     # Variables v Sale Price
     df_eda = df[vars_to_study + ['SalePrice']]
     boxplot_var = ['OverallQual']
@@ -66,6 +72,7 @@ def page2_sale_price_study_body():
         target_var = 'SalePrice'
         plot_per_variable(df_eda, boxplot_var, target_var)
 
+     
 
 def plot_per_variable(df_eda, boxplot_var, target_var):
     for col in df_eda.drop([target_var], axis=1).columns.to_list():
@@ -89,4 +96,33 @@ def plot_boxplot(df, col, target_var):
     fig, ax = plt.subplots(figsize=(12, 6))
     sns.boxplot(data=df, x=col, y=target_var)
     plt.title(f"Scatter plot of {target_var} vs {col}", fontsize=20)
+    st.pyplot(fig)
+
+
+def display_correlation_results(df):
+    """
+    Generate a bar chart.
+    """
+
+    # Set up figure
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    # Get y positions
+    y_positions = np.arange(len(df))
+
+    # Plot stacked horizontal bars
+    ax.barh(df['Feature'], df['Spearman'], color='blue', label='Spearman')
+    ax.barh(df['Feature'], df['Pearson'], color='green', left=df['Spearman'], label='Pearson')
+
+    # Threshold Line 
+    ax.axvline(x=1.15, color='red', linestyle='--',
+               linewidth=2, alpha= 0.7, label="Threshold = 1.15")
+    
+    # Labels & Title
+    ax.set_xlabel("Correlation Value")
+    ax.set_ylabel("Feature")
+    ax.set_title("Stacked Correlation Values (Spearman + Pearson)")
+    ax.legend()
+
+    # Display in Streamlit
     st.pyplot(fig)
