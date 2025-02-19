@@ -65,14 +65,15 @@ def DrawInputsWidgets():
     # from here on we draw the widget based on the variable type (numerical or categorical)
     # and set initial values
 
-# ['GrLivArea', 'GarageArea', 'TotalBsmtSF', '1stFlrSF','YearBuilt', 'OverallQual']
+    # ['GrLivArea', 'GarageArea', 'TotalBsmtSF', '1stFlrSF','YearBuilt', 'OverallQual']
+
     with col1:
         feature = "OverallQual"
         st_widget = st.selectbox(
-			label= feature,
-			options=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+            label= f"{feature} | Overall material + finish rating",
+            options=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
 			index = int(df[feature].median())
-        )
+            )
     X_live[feature] = st_widget
 
     with col2:
@@ -83,7 +84,7 @@ def DrawInputsWidgets():
 			max_value= int(df[feature].max()*percentageMax),
 			value= int(df[feature].median()), 
             step= 50
-        )
+            )
     X_live[feature] = st_widget
 
     with col3:
@@ -94,7 +95,7 @@ def DrawInputsWidgets():
             max_value=int(df[feature].max()*percentageMax),
             value=int(df[feature].median()),
             step= 50
-        )
+            )
     X_live[feature] = st_widget
 
     with col4:
@@ -105,7 +106,7 @@ def DrawInputsWidgets():
             max_value=int(df[feature].max()*percentageMax),
             value=int(df[feature].median()),
             step= 50
-        )
+            )
     X_live[feature] = st_widget
 
     with col5:
@@ -116,18 +117,18 @@ def DrawInputsWidgets():
 			max_value= date.today().year,
 			value= int(df[feature].median()), 
             step= 1
-        )
+            )
     X_live[feature] = st_widget
 
     with col6:
-        feature = "OverallQual"
+        feature = "GrLivArea"
         st_widget = st.number_input(
-            label="{feature} | Overall material + finish rating",
+            label=f"{feature} | Above Grade Living Area in Sq.Feet",
             min_value= 0, 
 			max_value= 10,
 			value= int(df[feature].median()), 
             step= 1
-        )
+            )
     X_live[feature] = st_widget
 
     return X_live
