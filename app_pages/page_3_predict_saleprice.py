@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 from src.data_management import load_house_sales_data, load_inherited_house_data, load_pkl_file
 from src.machine_learning.predictive_analysis_ui import predict_sale_price
@@ -124,12 +125,59 @@ def DrawInputsWidgets():
         feature = "GrLivArea"
         st_widget = st.number_input(
             label=f"{feature} | Above Grade Living Area in Sq.Feet",
-            min_value= 0, 
-			max_value= 10,
+            min_value=int(df[feature].min()*percentageMin),
+            max_value=int(df[feature].max()*percentageMax),
 			value= int(df[feature].median()), 
             step= 1
             )
     X_live[feature] = st_widget
 
+    
+    # Input values for remaining 17 variables
+    
+   # for feature in df.columns:
+   #     if feature not in X_live:
+   #         if pd.api.types.is_numeric_dtype(df[feature]):  # Check if missing
+   #             X_live[feature] = df[feature].median()  # Assign median value
+   #         else: 
+    #            X_live[feature] = "None"
+#
+    feature = "2ndFlrSF"
+    X_live[feature] = df[feature].median() 
+    feature = "BedroomAbvGr"
+    X_live[feature] = df[feature].median()
+    feature = "BsmtExposure"
+    X_live[feature] = 0
+    feature = "BsmtFinSF1"
+    X_live[feature] = 0
+    feature = "BsmtFinType1"
+    X_live[feature] = 0
+    feature = "BsmtUnfSF"
+    X_live[feature] = df[feature].median()
+    feature = "EnclosedPorch"
+    X_live[feature] = 0
+    feature = "GarageFinish"
+    X_live[feature] = 0
+    feature = "GarageYrBlt"
+    X_live[feature] = df[feature].median()
+    feature = "KitchenQual"
+    X_live[feature] = 0
+    feature = "LotArea"
+    X_live[feature] = df[feature].median()
+    feature = "LotFrontage"
+    X_live[feature] = df[feature].median()
+    feature = "MasVnrArea"
+    X_live[feature] = 0
+    feature = "OpenPorchSF"
+    X_live[feature] = df[feature].median()
+    feature = "OverallCond"
+    X_live[feature] = int(df[feature].median())
+    feature = "WoodDeckSF"
+    X_live[feature] = 0
+    feature = "YearRemodAdd"
+    X_live[feature] = int(df[feature].median())
+
+    # Check if there are any inf values in X_live_sale_price
+    print(X_live)
     return X_live
 
