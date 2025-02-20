@@ -9,7 +9,7 @@ from datetime import date
 def page3_predict_saleprice_body():
     
     # load predict sale_price files
-    version = 'v1'
+    version = 'v3'
     sale_price_pipe = load_pkl_file(
         f"outputs/ml_pipeline/predict_saleprice/{version}/regressor_pipeline.pkl")
     sale_price_features = (
@@ -70,10 +70,12 @@ def DrawInputsWidgets():
 
     with col1:
         feature = "OverallQual"
-        st_widget = st.selectbox(
+        st_widget = st.number_input(
             label= f"{feature} | Overall material + finish rating",
-            options=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-			index = int(df[feature].median())
+            min_value= 0, 
+			max_value= 10,
+			value= int(df[feature].median()),
+            step = 1
             )
     X_live[feature] = st_widget
 
@@ -100,13 +102,13 @@ def DrawInputsWidgets():
     X_live[feature] = st_widget
 
     with col4:
-        feature = "1stFlrSF"
+        feature = "YearRemodAdd"
         st_widget = st.number_input(
-            label=f"{feature} | Area of 1st Floor in Sq.Feet",
-            min_value=int(df[feature].min()*percentageMin),
-            max_value=int(df[feature].max()*percentageMax),
-            value=int(df[feature].median()),
-            step= 50
+            label=f"{feature} | Year the house was renovated",
+			min_value= int(df[feature].min()*percentageMin), 
+			max_value= date.today().year,
+			value= int(df[feature].median()), 
+            step= 1
             )
     X_live[feature] = st_widget
 
@@ -131,51 +133,6 @@ def DrawInputsWidgets():
             step= 1
             )
     X_live[feature] = st_widget
-
-    
-    # Input values for remaining 17 variables
-    
-   # for feature in df.columns:
-   #     if feature not in X_live:
-   #         if pd.api.types.is_numeric_dtype(df[feature]):  # Check if missing
-   #             X_live[feature] = df[feature].median()  # Assign median value
-   #         else: 
-    #            X_live[feature] = "None"
-#
-    feature = "2ndFlrSF"
-    X_live[feature] = df[feature].median() 
-    feature = "BedroomAbvGr"
-    X_live[feature] = df[feature].median()
-    feature = "BsmtExposure"
-    X_live[feature] = 0
-    feature = "BsmtFinSF1"
-    X_live[feature] = 0
-    feature = "BsmtFinType1"
-    X_live[feature] = 0
-    feature = "BsmtUnfSF"
-    X_live[feature] = df[feature].median()
-    feature = "EnclosedPorch"
-    X_live[feature] = 0
-    feature = "GarageFinish"
-    X_live[feature] = 0
-    feature = "GarageYrBlt"
-    X_live[feature] = df[feature].median()
-    feature = "KitchenQual"
-    X_live[feature] = 0
-    feature = "LotArea"
-    X_live[feature] = df[feature].median()
-    feature = "LotFrontage"
-    X_live[feature] = df[feature].median()
-    feature = "MasVnrArea"
-    X_live[feature] = 0
-    feature = "OpenPorchSF"
-    X_live[feature] = df[feature].median()
-    feature = "OverallCond"
-    X_live[feature] = int(df[feature].median())
-    feature = "WoodDeckSF"
-    X_live[feature] = 0
-    feature = "YearRemodAdd"
-    X_live[feature] = int(df[feature].median())
 
     # Check if there are any inf values in X_live_sale_price
     print(X_live)
