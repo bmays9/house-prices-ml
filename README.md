@@ -1,8 +1,13 @@
+# House Prices ML
+![](media/amiresponsive.png)
+
+Click [here](https://house-prices-ml.onrender.com/) to view the live site.
+
 # Overview
 
-This House-Price project utilises machine learning to build a functional data app for predicting House Sale Prices, presented on an interactive Streamlit dashboard, hosted on Heroku. The project is for educational purposes only and includes usage of Machine Learning Python Packages, Data analysis, Data visualisation tools, and Streamlit. 
+This House-Price project utilises machine learning to build a functional data app for predicting the Sale Price of a house, presented on an interactive Streamlit dashboard, hosted on Rendor. The project is for educational purposes only and includes usage of Machine Learning Python Packages, Data analysis, Data visualisation tools, and Streamlit. 
 
-The project was designed to help a client maximise the sale price of homes they have inherited in Ames, Iowa. To achieve this, the client has provided a dataset that includes house sale prices and various features of the properties. The goals are to identify the optimal sale price for these homes and to analyse how specific property features influence the price. 
+The project was designed to help a client maximise the sale prices of houses they have inherited in Ames, Iowa. To achieve this, the client has provided a dataset that contains historical house sale prices and associated features of each property. The project goals are to identify the expected sale price for these homes and to analyse how specific property features influence the price. 
 
 To ensure a structured and systematic approach, the project follows the Cross Industry Standard Process for Data Mining (CRISP-DM). This six-phase methodology provides a comprehensive framework for navigating the data science life cycle, from understanding the business problem to delivering actionable insights.
 
@@ -42,7 +47,7 @@ This was my fifth Milestone project with Code Institute and focusses not only on
 
 ## Business Requirements
 
-As a good friend, you are requested by your friend, who has received an inheritance from a deceased great-grandfather located in Ames, Iowa, to  help in maximising the sales price for the inherited properties.
+You are requested by your friend, who has received an inheritance from a deceased great-grandfather located in Ames, Iowa, to  help in maximising the sales price for the inherited properties.
 
 Although your friend has an excellent understanding of property prices in her own state and residential area, she fears that basing her estimates for property worth on her current knowledge might lead to inaccurate appraisals. What makes a house desirable and valuable where she comes from might not be the same in Ames, Iowa. She found a public dataset with house prices for Ames, Iowa, and will provide you with that.
 
@@ -83,12 +88,12 @@ For more information, please visit the "CorrelationStudy" notebook.
   - We obtain the R2 score and Mean Absolute Error.
 
 ## ML Business Case
-
   - We need to implement an ML model to predict the sale price of a house. Data analytics alone will not be sufficient to meet the business requirements. As the target variable (SalePrice) is a continuous numeric value, we will use a Regression Model.
-  - The target variable is already identified so the model will be superised.
+  - The target variable is already identified so the model will be supervised.
   - As agreed with the client, model success will be defined by an R2 score of at least 0.7 on the Train and Test Set.
   - The ML model will be considered expired if after a period of 12 months the models predictions are more than 40% different from the actual sale price, on more than 30% of predictions.
-  - The ML model should predict the sale price in USD if all necessary input variables (house attributes) are provided. 
+  - The ML model should predict the sale price in USD if all necessary input variables (house attributes) are provided.
+  - The client will be provided with an interactive dashboard which will faciliate the sale pice predictions of all houses in Ames, Iowa (including the inherited ones).
 
 ___________________________
   
@@ -104,6 +109,11 @@ ___________________________
 * Satisfy Business Requirement 1
 
 ### Page 3 | Sale Price Predictor
+* Satisfy Business Requirement 2
+* Display predicted `SalePrice` for the 4 inherited houses.
+* Allow user to input property data to predict `SalePrice' of any house.
+* "Run Predictive Analysis" button passes user data into the ML pipeline
+* Predicted `SalePrice` is displayed to the user.
 
 ### Page 4 | Hypothesesis - Testing and Validation
 
@@ -112,18 +122,26 @@ ___________________________
 
 ## Deployment
 
-### Heroku
+### Rendor
 
-* The App live link is: <https://YOUR_APP_NAME.herokuapp.com/>
-* Set the .python-version Python version to a [Heroku-24](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-* The project was deployed to Heroku using the following steps.
 
-1. Log in to Heroku and create an App
-2. At the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
+
+### Forking the GitHub Repository
+
+By forking the GitHub Repository you will be able to make a copy of the original repository on your own GitHub account allowing you to view and/or make changes without affecting the original repository by using the following steps:
+
+1. Log in to GitHub and locate the [GitHub Repository](repo here???)
+2. At the top of the Repository (not top of page) just above the "Settings" button on the menu, locate the "Fork" button.
+3. You should now have a copy of the original repository in your GitHub account.
+
+### Making a Local Clone
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/Code-Institute-Solutions/milestone-project-heritage-housing-issues)
+2. Under the repository name, click "Clone or download".
+3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
+4. Open commandline interface on your computer
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type `git clone`, and then paste the URL you copied in Step 3.
 
 ## Main Data Analysis and Machine Learning Libraries
 
