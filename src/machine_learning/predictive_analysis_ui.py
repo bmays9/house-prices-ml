@@ -15,4 +15,4 @@ def predict_sale_price(X_live, house_features, sale_price_pipeline):
 	value = float(proba[0].round(1))
 	amount = '${:,.2f}'.format(value)
 		
-	st.write(proba)
+	st.write(f"The predicted Sale Price for this property is: **{amount}**")

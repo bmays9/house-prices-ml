@@ -18,12 +18,32 @@ def page3_predict_saleprice_body():
         .to_list())
 
     st.write("### Predict Sale Price of Inherited Houses")
+
+    st.write("##### All sale prices are given in USD")
+
+    # load dataset
+    df_inherited = load_inherited_house_data()
+
     # display client's query and its data
     st.info(
         f"#### Business Requirement 2\n"
         f"* Firstly, the client is interested in the sale price prediction for "
         f"the 4 inherited houses.")
-    st.write(f"###### Predicted sales price of the 4 inherited houses\n")
+
+    # Extract relevant columns
+    subset_df = df_inherited[sale_price_features].T  # Transpose so features are rows
+
+    # Add SalePrice row
+    saleprice_row = pd.DataFrame(
+        [[127652, 152599, 172276, 179872]],
+        index=["SalePrice"])
+    
+    # Append SalePrice row
+    inherited_prediction_df = pd.concat([subset_df, saleprice_row]) 
+    
+    # Display table
+    st.write("#### Inherited house features with predicted Sale Price")
+    st.dataframe(inherited_prediction_df)
     
     
     st.write("### Predict Sale Price of Any House")

@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 def page_5_ml_predict_body():
 
-    version = 'v1'
+    version = 'v3'
     # load needed files
 
     sale_price_pipe = load_pkl_file(
@@ -25,7 +25,7 @@ def page_5_ml_predict_body():
     st.info(
         f"* The pipeline was created to satisfy Business Requirement 2 for our "
         f"client. Please see Page 1 of the dashboard as a reminder."
-        f"A regressor model was chosen to predict the **Sale Price. Data "
+        f"A regressor model was chosen to predict the **Sale Price**. Data "
         f"cleaing and feature engineering steps have been taken to optimise "
         f"our model."
         f"In agreement with the client, we have set the following targets as a "
