@@ -1,17 +1,33 @@
 # House Prices ML
-![](media/amiresponsive.png)
+![Site preview](media/amiresponsive.png)
 
 Click [here](https://house-prices-ml.onrender.com/) to view the live site.
+Please note: As the site is hosted on Render it can take a couple of minutes
+to load the page.
 
 # Overview
 
-This House-Price project utilises machine learning to build a functional data app for predicting the Sale Price of a house, presented on an interactive Streamlit dashboard, hosted on Rendor. The project is for educational purposes only and includes usage of Machine Learning Python Packages, Data analysis, Data visualisation tools, and Streamlit. 
+This House-Price project utilises machine learning to build a functional data 
+app for predicting the Sale Price of a house, presented on an interactive 
+Streamlit dashboard, hosted on Rendor. The project is for educational purposes 
+only and includes usage of Machine Learning Python Packages, Data analysis, 
+Data visualisation tools, and Streamlit. 
 
-The project was designed to help a client maximise the sale prices of houses they have inherited in Ames, Iowa. To achieve this, the client has provided a dataset that contains historical house sale prices and associated features of each property. The project goals are to identify the expected sale price for these homes and to analyse how specific property features influence the price. 
+The project was designed to help a client maximise the sale prices of houses 
+they have inherited in Ames, Iowa. To achieve this, the client has provided a 
+dataset that contains historical house sale prices and associated features of 
+each property. The project goals are to identify the expected sale price for 
+these homes and to analyse how specific property features influence the price. 
 
-To ensure a structured and systematic approach, the project follows the Cross Industry Standard Process for Data Mining (CRISP-DM). This six-phase methodology provides a comprehensive framework for navigating the data science life cycle, from understanding the business problem to delivering actionable insights.
+To ensure a structured and systematic approach, the project follows the Cross 
+Industry Standard Process for Data Mining (CRISP-DM). This six-phase 
+methodology provides a comprehensive framework for navigating the data science 
+life cycle, from understanding the business problem to delivering actionable 
+insights.
 
-This was my fifth Milestone project with Code Institute and focusses not only on the code and presentation of the application, but the logic behind the analysis and interpretation of the data.
+This was my fifth Milestone project with Code Institute and focusses not only 
+on the code and presentation of the application, but the logic behind the 
+analysis and interpretation of the data.
 
 ## Dataset Content
 
@@ -105,8 +121,12 @@ ___________________________
 * Describe Project Dataset
 * State Business Requirements
 
+![pageone](media/pageone.png)
+
 ### Page 2 | Sale Price Study
 * Satisfy Business Requirement 1
+
+![pagetwo](media/pagetwo.png)
 
 ### Page 3 | Sale Price Predictor
 * Satisfy Business Requirement 2
@@ -115,56 +135,142 @@ ___________________________
 * "Run Predictive Analysis" button passes user data into the ML pipeline
 * Predicted `SalePrice` is displayed to the user.
 
+![pagethree](media/pagethree.png)
+
 ### Page 4 | Hypothesesis - Testing and Validation
+
+![pagefour](media/pagefour.png)
 
 ### Page 5 | ML Pipeline
 
+![pagefive](media/pagefive.png)
 
+___________________________
+  
 ## Deployment
 
-### Rendor
+### Deployment To Render
 
+#### Create a Render Account
+1. Go to [Render.com](https://render.com/)
+2. Sign up for Render with GitHub
+3. Log into GitHub and then select “Authorize Render”
+4. Confirm your email address and click “Complete sign up”
+5. Open your email account and click the email verification link
 
+#### Connect Render to your GitHub repositories
+1. Click “New +” and select “Web Service”
+2. On the right of the page, select “+ Connect account” for GitHub
+3. Select your GitHub account
+4. Select the required repository / repositories.
+
+Once your repo is connected, there are a series of configuration settings required.
+Watch the console for some activity, deployment can take up to 15 minutes to complete
+
+#### Settings
+
+1. Choose unique name for the project. If the name is unique on Render.com, 
+the resulting URL will be <name>.onrender.com.
+2. Ensure the following settings match
+- Root Directory: Blank
+- Environment: Python 3
+- Branch: Main
+3. Set the Build Command: `pip install -r requirements.txt && ./setup.sh`
+4. Set the Start Command: `streamlit run app.py`
+
+#### Environment Variables
+
+1. Scroll down and click 'Advanced'
+2. Click "Add Environment Variable"
+3. Add a key: "PORT" with a value "8501"
+4. Add a key: "PYTHON_VERSION" with a value "3.12.1"
+5. Allow "Auto Deploy"
+6. Click “Create Web Service”
+
+The site will deploy every time a commit is pushed to the GitHub repository
+
+Additional documentation for this process can be found [here](https://code-institute-students.github.io/deployment-docs/42-pp5-pa/_)
 
 ### Forking the GitHub Repository
 
 By forking the GitHub Repository you will be able to make a copy of the original repository on your own GitHub account allowing you to view and/or make changes without affecting the original repository by using the following steps:
 
-1. Log in to GitHub and locate the [GitHub Repository](repo here???)
-2. At the top of the Repository (not top of page) just above the "Settings" button on the menu, locate the "Fork" button.
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/bmays9/house-prices-ml)
+2. At the top of the Repository just above the "Settings" button on the menu, locate the "Fork" button.
 3. You should now have a copy of the original repository in your GitHub account.
 
 ### Making a Local Clone
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/Code-Institute-Solutions/milestone-project-heritage-housing-issues)
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/bmays9/house-prices-ml)
 2. Under the repository name, click "Clone or download".
 3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
-4. Open commandline interface on your computer
+4. Open command line interface on your computer
 5. Change the current working directory to the location where you want the cloned directory to be made.
 6. Type `git clone`, and then paste the URL you copied in Step 3.
 
+___________________________
+  
 ## Main Data Analysis and Machine Learning Libraries
 
-* Here you should list the libraries you used in the project and provide example(s) of how you used these libraries.
+GitHub: This was used for version control and the codespace was used as the IDE.
 
+GitHub Projects: This was used for User Story tracking and the Kanban board.
+
+NumPy: Used to process arrays and the store the values.
+
+Pandas: We used this for data analysis and visualisations.
+
+Matplotlib: This was used for generating graphs for data visualisation.
+
+ML-Scikit-learn: This was used for ML pipeline creation.
+
+Seaborn: Used for data visualisations.
+
+Streamlit: This is what we used to create the dashboard that is presented to 
+the client for use.
+
+ML-Feature-engine: This was used to engineer the data for the ML Pipeline.
+
+Kaggle: This was the site used to download the initial dataset provided by the client. 
+
+Python: The main programming language used for this project.
+
+Render: Used to host the live dashboard to present to the client. 
+
+___________________________
+  
+## Bugs
+
+#### When attempting to run the first prediction on the dashboard I encountered the error.
+
+This was found to be due to the ML pipeline being created using all 23 variables as input. 
+On the dashboard, only the 6 user inputted (best features) were being fed to the pipeline.
+I decided to refit the pipeline using only the best features. In choosing to use 6 features,
+I was able to refit the model without a noticeable drop in performance.
+
+#### When attempting to run the first prediction on the dashboard I encountered the error.
+
+Once the number of inputs was resolved I received a new error. The calculation was not
+possible as I was providing a String input on the 'OverallCond' variable. This was because
+I has configured the widget to use a drop-down selection of numbers (0-10), but the value
+passed to the pipeline was in string format. To correct this I changed the widget type to
+a numeric input.
+
+#### When deploying to Render, I experienced an error 'No module named 'pkg_resources'
+
+To correct this, I added a new line to the Requirements.txt file to specify the version
+of setuptools (75.6.0). Once I deployed again after this change there was no error.
+
+___________________________
+  
 ## Credits
 
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism.
-* You can break the credits section up into Content and Media, depending on what you have included in your project.
+* The Code Institute Churnometer project was a valuable resource to use as 
+the building blocks and structure for this project.
 
-### Content
+## Acknowledgements
 
-* The text for the Home page was taken from Wikipedia Article A
-* Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-* The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
-
-### Media
-
-* The photos used on the home and sign-up page are from This Open Source site
-* The images used for the gallery page were taken from this other open-source site
-
-## Acknowledgements (optional)
-
-
-* In case you would like to thank the people that provided support through this project.
-
+* I would like to thank my family for all their support throughout this 
+project.
+* I must also thank Darragh Drennan and Ronan Rakic who provided valuable
+help and support via Slack when it was needed.
