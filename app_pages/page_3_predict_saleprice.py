@@ -2,12 +2,14 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from src.data_management import load_house_sales_data, load_inherited_house_data, load_pkl_file
+from src.data_management import load_house_sales_data
+from src.data_management import load_inherited_house_data, load_pkl_file
 from src.machine_learning.predictive_analysis_ui import predict_sale_price
 from datetime import date
 
+
 def page3_predict_saleprice_body():
-    
+
     # load predict sale_price files
     version = 'v3'
     sale_price_pipe = load_pkl_file(
@@ -27,35 +29,34 @@ def page3_predict_saleprice_body():
     # display client's query and its data
     st.info(
         f"#### Business Requirement 2\n"
-        f"* Firstly, the client is interested in the sale price prediction for "
-        f"the 4 inherited houses.")
+        f"* Firstly, the client is interested in the sale price prediction "
+        f"for the 4 inherited houses.")
 
-    # Extract relevant columns
-    subset_df = df_inherited[sale_price_features].T  # Transpose so features are rows
+    # Extract relevant columns and transpose so features are rows
+    subset_df = df_inherited[sale_price_features].T
 
     # Add SalePrice row
     saleprice_row = pd.DataFrame(
         [[127652, 152599, 172276, 179872]],
         index=["SalePrice"])
-    
+
     # Append SalePrice row
-    inherited_prediction_df = pd.concat([subset_df, saleprice_row]) 
-    
+    inherited_prediction_df = pd.concat([subset_df, saleprice_row])
+
     # Display table
     st.write("#### Inherited house features with predicted Sale Price")
     st.dataframe(inherited_prediction_df)
-    
-    
+
     st.write("### Predict Sale Price of Any House")
     # display client's query and its data
     st.info(
         f"#### Business Requirement 2\n"
-        f"* Secondly, the client is interested in the sale price prediction for "
-        f"any house in Ames, Iowa.")
+        f"* Secondly, the client is interested in the sale price prediction "
+        f"for any house in Ames, Iowa.")
 
     st.write("---")
     st.write("Please enter the known property information below. "
-	"Any missing data will be set to the median value. ")
+             "Any missing data will be set to the median value. ")
 
     # Generate Live Data
     X_live = DrawInputsWidgets()
@@ -72,30 +73,30 @@ def DrawInputsWidgets():
     df = load_house_sales_data()
     percentageMin, percentageMax = 0.4, 2.0
 
-# we create input widgets only for our 6 features
+    # we create input widgets only for our 6 features
     col1, col2 = st.columns(2)
     col3, col4 = st.columns(2)
     col5, col6 = st.columns(2)
 
-    # We are using these features to feed the ML pipeline 
+    # We are using these features to feed the ML pipeline
     # values copied from check_variables_for_UI() result
 
     # create an empty DataFrame, which will be the live data
     X_live = pd.DataFrame([], index=[0])
 
-    # from here on we draw the widget based on the variable type (numerical or categorical)
-    # and set initial values
-
-    # ['GrLivArea', 'GarageArea', 'TotalBsmtSF', '1stFlrSF','YearBuilt', 'OverallQual']
+    # from here on we draw the widget based on the variable type
+    # (numerical or categorical) and set initial values
+    # ['GrLivArea', 'GarageArea', 'TotalBsmtSF',
+    # '1stFlrSF','YearBuilt', 'OverallQual']
 
     with col1:
         feature = "OverallQual"
         st_widget = st.number_input(
-            label= f"{feature} | Overall material + finish rating",
-            min_value= 0, 
-			max_value= 10,
-			value= int(df[feature].median()),
-            step = 1
+            label=f"{feature} | Overall material + finish rating",
+            min_value=0,
+            max_value=10,
+            value=int(df[feature].median()),
+            step=1
             )
     X_live[feature] = st_widget
 
@@ -103,10 +104,10 @@ def DrawInputsWidgets():
         feature = "GarageArea"
         st_widget = st.number_input(
             label=f"{feature} | Area of Garage in Sq.Feet",
-            min_value= int(df[feature].min()*percentageMin), 
-			max_value= int(df[feature].max()*percentageMax),
-			value= int(df[feature].median()), 
-            step= 50
+            min_value=int(df[feature].min()*percentageMin),
+            max_value=int(df[feature].max()*percentageMax),
+            value=int(df[feature].median()),
+            step=50
             )
     X_live[feature] = st_widget
 
@@ -117,7 +118,7 @@ def DrawInputsWidgets():
             min_value=int(df[feature].min()*percentageMin),
             max_value=int(df[feature].max()*percentageMax),
             value=int(df[feature].median()),
-            step= 50
+            step=50
             )
     X_live[feature] = st_widget
 
@@ -125,10 +126,10 @@ def DrawInputsWidgets():
         feature = "YearRemodAdd"
         st_widget = st.number_input(
             label=f"{feature} | Year the house was renovated",
-			min_value= int(df[feature].min()*percentageMin), 
-			max_value= date.today().year,
-			value= int(df[feature].median()), 
-            step= 1
+            min_value=int(df[feature].min()*percentageMin),
+            max_value=date.today().year,
+            value=int(df[feature].median()),
+            step=1
             )
     X_live[feature] = st_widget
 
@@ -136,10 +137,10 @@ def DrawInputsWidgets():
         feature = "YearBuilt"
         st_widget = st.number_input(
             label=f"{feature} | Year the house was built",
-			min_value= int(df[feature].min()*percentageMin), 
-			max_value= date.today().year,
-			value= int(df[feature].median()), 
-            step= 1
+            min_value=int(df[feature].min()*percentageMin),
+            max_value=date.today().year,
+            value=int(df[feature].median()),
+            step=1
             )
     X_live[feature] = st_widget
 
@@ -149,12 +150,11 @@ def DrawInputsWidgets():
             label=f"{feature} | Above Grade Living Area in Sq.Feet",
             min_value=int(df[feature].min()*percentageMin),
             max_value=int(df[feature].max()*percentageMax),
-			value= int(df[feature].median()), 
-            step= 1
+            value=int(df[feature].median()),
+            step=1
             )
     X_live[feature] = st_widget
 
     # Check if there are any inf values in X_live_sale_price
     print(X_live)
     return X_live
-

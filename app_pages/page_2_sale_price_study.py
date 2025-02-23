@@ -8,26 +8,26 @@ from feature_engine.discretisation import ArbitraryDiscretiser
 import seaborn as sns
 sns.set_style("whitegrid")
 
+
 def page2_sale_price_study_body():
     """
     Use data visualistions to display correlated feature study
     """
-    
+
     # Load data
     df = load_house_sales_data()
     df_results = load_correlation_data()
 
     # From CorrelationStudy notebook
     vars_to_study = ['GrLivArea', 'GarageArea', 'TotalBsmtSF',
-                     '1stFlrSF','YearBuilt', 'OverallQual']
-    
+                     '1stFlrSF', 'YearBuilt', 'OverallQual']
+
     st.write("## Sale Price Correlation Study | Business Requirement 1")
     st.info(
-        f"* **Business Requirement** - The client is interested in discovering "
-        f"how house attributes correlate with sale prices. Therefore, the "
-        f"client expects data visualizations of the correlated variables "
-        f"against the sale price.")
-
+        f"* **Business Requirement** - The client is interested in "
+        f"discovering how house attributes correlate with sale prices. "
+        f"Therefore, the client expects data visualizations of the "
+        f"correlated variables against the sale price.")
 
     # inspect data
     if st.checkbox("Inspect House Data"):
@@ -38,7 +38,7 @@ def page2_sale_price_study_body():
             f"property.")
 
         st.write(df.head(10))
-        
+
         st.write("---")
 
     # Correlation Study Summary
@@ -55,7 +55,7 @@ def page2_sale_price_study_body():
     st.info(
         f"- Typically, larger houses have a higher sale price.\n"
         f"- Typically, newer houses have a higher sale price.\n"
-        f"- The quality of the house correlates positively with the sale " 
+        f"- The quality of the house correlates positively with the sale "
         f"price.\n"
         f"- An overall condition rating of at least 5 is required to achieve "
         f"the highest sale prices.\n"
@@ -63,7 +63,7 @@ def page2_sale_price_study_body():
 
     # Correlation Results
     if st.checkbox("Correlation Results: Target variable = SalePrice"):
-        display_correlation_results(df_results) 
+        display_correlation_results(df_results)
 
     # Variables v Sale Price
     df_eda = df[vars_to_study + ['SalePrice']]
@@ -72,7 +72,6 @@ def page2_sale_price_study_body():
         target_var = 'SalePrice'
         plot_per_variable(df_eda, boxplot_var, target_var)
 
-     
 
 def plot_per_variable(df_eda, boxplot_var, target_var):
     for col in df_eda.drop([target_var], axis=1).columns.to_list():
@@ -80,14 +79,18 @@ def plot_per_variable(df_eda, boxplot_var, target_var):
         if col in boxplot_var:
             plot_boxplot(df_eda, col, target_var)
 
+
 def plot_scatter(df, col, target_var):
     """
     Generate a scatter plot.
     """
     fig, ax = plt.subplots(figsize=(12, 6))
-    sns.regplot(data=df, x=col, y=target_var, ci=None, line_kws={"color": "green"})
-    plt.title(f"Scatter plot of {target_var} vs {col}", fontsize=20)
+    sns.regplot(data=df, x=col, y=target_var, ci=None,
+                line_kws={"color": "green"}),
+    plt.title(f"Scatter plot of {target_var} vs {col}",
+              fontsize=20)
     st.pyplot(fig)
+
 
 def plot_boxplot(df, col, target_var):
     """
@@ -112,12 +115,13 @@ def display_correlation_results(df):
 
     # Plot stacked horizontal bars
     ax.barh(df['Feature'], df['Spearman'], color='blue', label='Spearman')
-    ax.barh(df['Feature'], df['Pearson'], color='green', left=df['Spearman'], label='Pearson')
+    ax.barh(df['Feature'], df['Pearson'], color='green', left=df['Spearman'],
+            label='Pearson')
 
-    # Threshold Line 
+    # Threshold Line
     ax.axvline(x=1.15, color='red', linestyle='--',
-               linewidth=2, alpha= 0.7, label="Threshold = 1.15")
-    
+               linewidth=2, alpha=0.7, label="Threshold = 1.15")
+
     # Labels & Title
     ax.set_xlabel("Correlation Value")
     ax.set_ylabel("Feature")

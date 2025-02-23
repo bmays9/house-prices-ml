@@ -1,8 +1,10 @@
 import streamlit as st
 
-# Class to generate multiple Streamlit pages using an object oriented approach 
-# The code was copied from the Churnometer Project from Code Institute
-class MultiPage: 
+# Class to generate multiple Streamlit pages using an object oriented approach
+# The code was based on the Churnometer Project from Code Institute
+
+
+class MultiPage:
 
     def __init__(self, app_name) -> None:
         self.pages = []
@@ -11,11 +13,12 @@ class MultiPage:
         st.set_page_config(
             page_title=self.app_name,
             page_icon="🏠")
-    
-    def app_page(self, title, func) -> None: 
-        self.pages.append({"title": title, "function": func })
+
+    def app_page(self, title, func) -> None:
+        self.pages.append({"title": title, "function": func})
 
     def run(self):
         st.title(self.app_name)
-        page = st.sidebar.radio('Menu', self.pages, format_func=lambda page: page['title'])
+        page = st.sidebar.radio(
+            'Menu', self.pages, format_func=lambda page: page['title'])
         page['function']()
