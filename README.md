@@ -2,6 +2,7 @@
 ![Site preview](media/amiresponsive.png)
 
 Click [here](https://house-prices-ml.onrender.com/) to view the live site.
+
 Please note: As the site is hosted on Render it can take a couple of minutes
 to load the page.
 
@@ -111,6 +112,23 @@ For more information, please visit the "CorrelationStudy" notebook.
   - The ML model should predict the sale price in USD if all necessary input variables (house attributes) are provided.
   - The client will be provided with an interactive dashboard which will faciliate the sale pice predictions of all houses in Ames, Iowa (including the inherited ones).
 
+
+### User Stories
+
+The following user stories were created to manage the development of this project. 
+A Kanban board was used to track the status of each item.
+
+[View GitHub project board](https://github.com/users/bmays9/projects/10/views/1)
+
+- #1 | Data Collection
+- #2 | Data visualisation, cleaning & preparation
+- #3 | Model training, optimisation and validation
+- #4 | Data Cleaning
+- #5 | Data Analysis
+- #6 | Feature Engineering
+- #7 | Correlation Study
+- #8 | Interactive Dashboard
+- #9 | Deployment to Render[]
 ___________________________
   
 
@@ -243,6 +261,8 @@ ___________________________
 
 #### When attempting to run the first prediction on the dashboard I encountered the error.
 
+![Bug1](media/error_predict1.png)
+
 This was found to be due to the ML pipeline being created using all 23 variables as input. 
 On the dashboard, only the 6 user inputted (best features) were being fed to the pipeline.
 I decided to refit the pipeline using only the best features. In choosing to use 6 features,
@@ -250,13 +270,18 @@ I was able to refit the model without a noticeable drop in performance.
 
 #### When attempting to run the first prediction on the dashboard I encountered the error.
 
+![Bug2](media/error_predict.png)
+
 Once the number of inputs was resolved I received a new error. The calculation was not
 possible as I was providing a String input on the 'OverallCond' variable. This was because
 I has configured the widget to use a drop-down selection of numbers (0-10), but the value
 passed to the pipeline was in string format. To correct this I changed the widget type to
 a numeric input.
 
+
 #### When deploying to Render, I experienced an error 'No module named 'pkg_resources'
+
+![Bug3](media/error_deployment1.png)
 
 To correct this, I added a new line to the Requirements.txt file to specify the version
 of setuptools (75.6.0). Once I deployed again after this change there was no error.
