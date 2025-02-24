@@ -144,7 +144,8 @@ ___________________________
 ### Page 2 | Sale Price Study
 * Satisfy Business Requirement 1
 
-![pagetwo](media/pagetwo.png)
+![pagetwo](media/pagetwo1.png)
+![pagetwo](media/pagetwo2.png)
 
 ### Page 3 | Sale Price Predictor
 * Satisfy Business Requirement 2
@@ -153,7 +154,8 @@ ___________________________
 * "Run Predictive Analysis" button passes user data into the ML pipeline
 * Predicted `SalePrice` is displayed to the user.
 
-![pagethree](media/pagethree.png)
+![pagethree](media/pagethree1.png)
+![pagethree](media/pagethree2.png)
 
 ### Page 4 | Hypothesesis - Testing and Validation
 
