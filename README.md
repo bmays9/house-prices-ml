@@ -8,7 +8,7 @@ to load the page.
 
 # Overview
 
-This House-Price project utilises machine learning to build a functional data 
+This project utilises machine learning to build a functional data 
 app for predicting the Sale Price of a house, presented on an interactive 
 Streamlit dashboard, hosted on Rendor. The project is for educational purposes 
 only and includes usage of Machine Learning Python Packages, Data analysis, 
@@ -29,11 +29,14 @@ insights.
 This was my fifth Milestone project with Code Institute and focusses not only 
 on the code and presentation of the application, but the logic behind the 
 analysis and interpretation of the data.
+___________________________
 
 ## Dataset Content
 
 * The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data). 
-* The dataset has almost 1.5 thousand rows and represents housing records from Ames, Iowa, indicating house profile (Floor Area, Basement, Garage, Kitchen, Lot, Porch, Wood Deck, Year Built) and its respective sale price for houses built between 1872 and 2010.
+* The dataset has almost 1500 rows and represents housing records from Ames, Iowa, 
+indicating house profile (Floor Area, Basement, Garage, Kitchen, Lot, Porch, Wood Deck, Year Built) 
+and its respective sale price for houses built between 1872 and 2010.
 
 |Variable|Meaning|Units|
 |:----|:----|:----|
@@ -61,6 +64,8 @@ analysis and interpretation of the data.
 |YearBuilt|Original construction date|1872 - 2010|
 |YearRemodAdd|Remodel date (same as construction date if no remodelling or additions)|1950 - 2010|
 |SalePrice|Sale Price|34900 - 755000|
+
+___________________________
 
 ## Business Requirements
 
@@ -92,26 +97,32 @@ Houses in the best condition command the highest prices.
 ## Rationale to map the business requirements to the data visualizations and Machine Learning task
 
 ### Business Requirement 1: Data Visualization and Correlation Study
-  - We will load, inspect, evaluate, clean and feature engineer the data related to the houses provided by the client.
-  - We will conduct a correlation study to understand how each variable correlates with Sale Price of a house.
-  - We will use the visual representations of the data to test our hypotheses and fulfill the business requirements.
-For more information, please visit the "CorrelationStudy" notebook.
+  - We will load, inspect, evaluate, clean and feature engineer the dataset provided by the client.
+  - We will conduct correlation studies (Pearson and Spearman) to analyse how each variable affects the Sale Price of a house.
+  - We will use correlation and distribution analysis to test our hypotheses.
+  - We will use the visual representations of the data study to fulfill the business requirements and present our findings to the client.
+
+For more information, please visit the "04-CorrelationStudy" notebook.
 
 ### Business Requirement 2: Regression Pipeline
   - We want to be able to predict the sale price of the 4 inherited houses for our client, and any other house in Ames, Iowa.
-  - We will identify the data variables (property attributes) necessary to make a prediction about the sale price.
-  - We will run a regression model to predict the sale price from the selected variables.
+  - We will identify through data analysis studies the variables (property attributes) necessary to make a prediction about the sale price.
   - We will clean and feature engineer the data to prepare it for machine learning. 
+  - We will run a regression model to predict the sale price (target variable) from the selected variables.
   - We obtain the R2 score and Mean Absolute Error.
 
 ## ML Business Case
-  - We need to implement an ML model to predict the sale price of a house. Data analytics alone will not be sufficient to meet the business requirements. As the target variable (SalePrice) is a continuous numeric value, we will use a Regression Model.
+  - We need to implement an ML model to predict the sale price of a house. 
+  - Data analytics alone will not be sufficient to meet the business requirements. 
+  - The target variable (SalePrice) is a continuous numeric value so we will use a Regression Model.
   - The target variable is already identified so the model will be supervised.
   - As agreed with the client, model success will be defined by an R2 score of at least 0.7 on the Train and Test Set.
   - The ML model will be considered expired if after a period of 12 months the models predictions are more than 40% different from the actual sale price, on more than 30% of predictions.
-  - The ML model should predict the sale price in USD if all necessary input variables (house attributes) are provided.
+  - Only predictions where all required variables were known will be considered for the expiration tests mentioned above. 
+  - The ML model should output a numeric value, which will represent the predicted sale price in USD.
   - The client will be provided with an interactive dashboard which will faciliate the sale pice predictions of all houses in Ames, Iowa (including the inherited ones).
 
+___________________________
 
 ### User Stories
 
@@ -121,47 +132,74 @@ A Kanban board was used to track the status of each item.
 [View GitHub project board](https://github.com/users/bmays9/projects/10/views/1)
 
 - #1 | Data Collection
-- #2 | Data visualisation, cleaning & preparation
+  - As a data engineer, i want to have access to the complete dataset provided by the client so that reliable data analysis can begin.
+- #2 | Data visualisation, cleaning & preparation.
+  - As a client I want to view visual representations of the data analysis so that I understand the correlation between house attributes and sale price, as per the business objectives.
 - #3 | Model training, optimisation and validation
+  - As a developer I want to train a model with machine learning to predict the house price of any house in Ames, Iowa.
 - #4 | Data Cleaning
+  - As a data engineer I want to clean the data and create a test and train set so that the dataset is prepared for machine learning process.
 - #5 | Data Analysis
+  - As a data analyst I want to analyse the data and present the findings using data visualisation so that conclusions can be drawn to meet the attribute correlation business requirement.
 - #6 | Feature Engineering
+  - As a developer, I want to transform our dataset into a better format so that the algorithm can learn the variable relationships more successfully.
 - #7 | Correlation Study
+  - As a data analyst I want to conduct a correlation study on the dataset so that I can answer the business requirement from the client.
 - #8 | Interactive Dashboard
-- #9 | Deployment to Render[]
+  - As a client I want to be able to use a dashboard that features data visualisations and a sale price predictor so that all Business Requirements are satisfied.
+- #9 | Deployment to Render
+  - As a client I want the project deployed to Render so that I can access a live version of the dashboard.
 ___________________________
   
-
 ## Dashboard Design
 
 ### Page 1 | Project Summary
-* Explain the project, terms & jargon
-* Describe Project Dataset
-* State Business Requirements
+This page:
+* Explains the project, terms & jargon
+* Describes the project Dataset
+* Shows a sample of the dataset
+* States the Business Requirements which are the aims of the project
 
 ![pageone](media/pageone.png)
 
 ### Page 2 | Sale Price Study
-* Satisfy Business Requirement 1
+This page:
+* Satisfies Business Requirement 1
+* States Buinsess Requirement 1
+* Shows the results of the stacked correlation study with SalePrice the target variable.
+* Contains data visualisations of the most correlated variables.
 
 ![pagetwo](media/pagetwo1.png)
 ![pagetwo](media/pagetwo2.png)
 
 ### Page 3 | Sale Price Predictor
-* Satisfy Business Requirement 2
-* Display predicted `SalePrice` for the 4 inherited houses.
-* Allow user to input property data to predict `SalePrice' of any house.
-* "Run Predictive Analysis" button passes user data into the ML pipeline
-* Predicted `SalePrice` is displayed to the user.
+This page:
+* Satisfies Business Requirement 2
+* Displays the pertinent detail of the 4 inherited houses predicted (values of necessary property features)
+* Displays the calculated predicted `SalePrice` for the 4 inherited houses.
+* Allows users to input property data to predict the `SalePrice' of any house (in Ames, Iowa).
+* Passes the user data into the ML pipeline via the "Run Predictive Analysis" button.
+* Displays the predicted `SalePrice` clearly, in USD to the user.
 
 ![pagethree](media/pagethree1.png)
 ![pagethree](media/pagethree2.png)
 
 ### Page 4 | Hypothesesis - Testing and Validation
+This page:
+* States the three hypotheses that were formulated at the start of the project.
+* States the conclusion of each hypothesis, whether it was proved to be true or false.
+* Provides additional explanation around the hypothesis conclusion.
 
 ![pagefour](media/pagefour.png)
 
 ### Page 5 | ML Pipeline
+This page:
+* Describes the ML pipeline steps
+* Provides textual and visual representation of the features with most importance
+* Defines the R2 target score as agreed with the client
+* Provides pipeline performance evaluation results on the Train and Test sets
+* Confirms that the model performance meets the client expectation
+
 
 ![pagefive](media/pagefive.png)
 
@@ -209,7 +247,7 @@ the resulting URL will be <name>.onrender.com.
 
 The site will deploy every time a commit is pushed to the GitHub repository
 
-Additional documentation for this process can be found [here](https://code-institute-students.github.io/deployment-docs/42-pp5-pa/_)
+Additional documentation for this process can be found [here](https://code-institute-students.github.io/deployment-docs/42-pp5-pa/)
 
 ### Forking the GitHub Repository
 
@@ -292,8 +330,10 @@ ___________________________
   
 ## Credits
 
+* The Code Institute Predictive Analytics course material
 * The Code Institute Churnometer project was a valuable resource to use as 
-the building blocks and structure for this project.
+the building blocks and structure for this project. The code for many of the functions 
+used in this project was based on this CI walkthrough proejct. 
 
 ## Acknowledgements
 
