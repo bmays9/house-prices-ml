@@ -164,10 +164,10 @@ This page:
 
 ### Page 2 | Sale Price Study
 This page:
+* States Business Requirement 1
+* Shows the results of the stacked correlation study with SalePrice the target variable
+* Contains data visualisations of the most correlated variables
 * Satisfies Business Requirement 1
-* States Buinsess Requirement 1
-* Shows the results of the stacked correlation study with SalePrice the target variable.
-* Contains data visualisations of the most correlated variables.
 
 ![pagetwo](media/pagetwo1.png)
 ![pagetwo](media/pagetwo2.png)

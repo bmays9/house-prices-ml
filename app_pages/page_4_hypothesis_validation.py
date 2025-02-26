@@ -33,7 +33,7 @@ def page4_hypothesis_validation_body():
         f"hypothesis is true.")
 
     st.info(
-        f"3: Houses in the best condition command the highest prices.\n")
+        f"#3: Houses in the best condition command the highest prices.\n")
 
     st.error(
         f"**False**. \n"
