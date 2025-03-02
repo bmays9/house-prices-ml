@@ -22,7 +22,7 @@ def page2_sale_price_study_body():
     vars_to_study = ['GrLivArea', 'GarageArea', 'TotalBsmtSF',
                      '1stFlrSF', 'YearBuilt', 'OverallQual']
 
-    st.write("## Sale Price Correlation Study | Business Requirement 1")
+    st.write("## Sale Price Correlation Study \nBusiness Requirement 1")
     st.info(
         f"* **Business Requirement** - The client is interested in "
         f"discovering how house attributes correlate with sale prices. "
@@ -44,11 +44,19 @@ def page2_sale_price_study_body():
     # Correlation Study Summary
 
     st.write(
-        f"* A correlation study was conducted in the notebook to better "
+        f"A correlation study was conducted in the notebook to better "
         f"understand how the variables are correlated to our target variable, "
         f"the Sale Price. \n"
         f"Our analysis revealed the most correlated variables are: \n"
-        f"**{vars_to_study}**")
+        f"- **{vars_to_study}**\n")
+    st.write(
+        f"The 'Correlation Results' plot below demonstrates these findings.\n"
+        f"The correlation value shown in the plot is the sum of the Pearson "
+        f"and Spearman correlation result values.\n")
+
+    # Correlation Results
+    if st.checkbox("Correlation Results: Target variable = SalePrice"):
+        display_correlation_results(df_results)
 
     # Text based on "04 - CorrelationStudy" notebook - "Conclusions" section
     st.subheader(f"**Conclusions from the Study**")
@@ -56,14 +64,11 @@ def page2_sale_price_study_body():
         f"- Typically, larger houses have a higher sale price.\n"
         f"- Typically, newer houses have a higher sale price.\n"
         f"- The quality of the house correlates positively with the sale "
-        f"price.\n"
-        f"- An overall condition rating of at least 5 is required to achieve "
-        f"the highest sale prices.\n"
-    )
-
-    # Correlation Results
-    if st.checkbox("Correlation Results: Target variable = SalePrice"):
-        display_correlation_results(df_results)
+        f"price.\n")
+    st.info(
+        f"The 'Correlation per variable' plots below demostrates these "
+        f"findings. The upward green line proving the positive "
+        f"correlation in all cases.\n")
 
     # Variables v Sale Price
     df_eda = df[vars_to_study + ['SalePrice']]
