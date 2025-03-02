@@ -209,6 +209,9 @@ ___________________________
 
 ### Deployment To Render
 
+Note: Deployment to Heroku was attempted but after encountering their size restriction
+I was advised to switch to Render.
+
 #### Create a Render Account
 1. Go to [Render.com](https://render.com/)
 2. Sign up for Render with GitHub
