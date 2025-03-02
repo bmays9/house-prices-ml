@@ -43,6 +43,10 @@ def page3_predict_saleprice_body():
     # Append SalePrice row
     inherited_prediction_df = pd.concat([subset_df, saleprice_row])
 
+    # Remove commas for improved displayed number format
+    inherited_prediction_df = inherited_prediction_df.replace(
+        ',', '', regex=True)
+
     # Display table
     st.write("#### Inherited house features with predicted Sale Price")
     st.dataframe(inherited_prediction_df)
