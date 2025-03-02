@@ -62,6 +62,10 @@ def page_5_ml_predict_body():
     regression_performance(X_train=X_train, y_train=y_train,
                            X_test=X_test, y_test=y_test,
                            pipeline=sale_price_pipe)
+    st.success(
+        f"With this information we can conclude the the ML pipeline has "
+        f"successfully satisfied the predictive task it was built to address."
+        )
 
     # The Churnometer Project from Code Institute was the basis for the
     # above code, with some modifications to adapt to this project.

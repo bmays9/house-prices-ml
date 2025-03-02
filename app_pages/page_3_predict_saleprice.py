@@ -30,7 +30,7 @@ def page3_predict_saleprice_body():
     st.info(
         f"#### Business Requirement 2\n"
         f"* Firstly, the client is interested in the sale price prediction "
-        f"for the 4 inherited houses.")
+        f"for the 4 inherited houses.\n")
 
     # Extract relevant columns and transpose so features are rows
     subset_df = df_inherited[sale_price_features].T
@@ -158,7 +158,5 @@ def DrawInputsWidgets():
             step=1
             )
     X_live[feature] = st_widget
-
-    # Check if there are any inf values in X_live_sale_price
-    print(X_live)
+      
     return X_live
